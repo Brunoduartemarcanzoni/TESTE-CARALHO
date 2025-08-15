@@ -63,9 +63,8 @@ id_aluno INTEGER PRIMARY KEY AUTOINCREMENT,
 
 // Cadastrar cliente
 app.post('/aluno', (req, res) => {
-    const {  nome,telefone, email, cpf, rg, genero, data_de_nascimento, cep, logradouro, numero, complemento, cidade, bairro, estado, numero_de_matricula, curso, periodo, turno, nome_responsavel, telefone_responsavel, parentesco_responsavel, cpf_responsavel,   email_responsavel
 
-    } = req.body;
+    const {  nome,telefone, email, cpf, rg, genero, data_de_nascimento, cep, logradouro, numero, complemento, cidade, bairro, estado, numero_de_matricula, curso, periodo, turno, nome_responsavel, telefone_responsavel, parentesco_responsavel, cpf_responsavel,   email_responsavel } = req.body;
 
     if (!nome || !cpf) {
         return res.status(400).send('Nome e CPF são obrigatórios.');
@@ -73,11 +72,9 @@ app.post('/aluno', (req, res) => {
 
     const query = `INSERT INTO aluno ( nome,telefone, email, cpf, rg, genero, data_de_nascimento, cep, logradouro, numero, complemento, cidade, bairro, estado, numero_de_matricula, curso, periodo, turno, nome_responsavel, telefone_responsavel, parentesco_responsavel, cpf_responsavel,   email_responsavel) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
 `;
-    db.run(query, [ nome,telefone, email, cpf, rg, genero, data_de_nascimento, cep, logradouro, numero, complemento, cidade, bairro, estado, numero_de_matricula, curso, periodo, turno, nome_responsavel, telefone_responsavel, parentesco_responsavel, cpf_responsavel, email_responsavel
-
-    ], function (err) {
+    db.run(query, [ nome,telefone, email, cpf, rg, genero, data_de_nascimento, cep, logradouro, numero, complemento, cidade, bairro, estado, numero_de_matricula, curso, periodo, turno, nome_responsavel, telefone_responsavel, parentesco_responsavel, cpf_responsavel, email_responsavel ], function (err) {
         if (err) {
-            return res.status(500).send('Erro ao cadastrar aluno.');
+            return res.status(500).send('Erro ao cadastrar aluno..');
         }
         res.status(201).send({ id: this.lastID, message: 'Aluno cadastrado com sucesso.' });
     });
